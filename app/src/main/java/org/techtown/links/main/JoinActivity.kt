@@ -33,8 +33,6 @@ class JoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
-
-
         auth = Firebase.auth
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_join)

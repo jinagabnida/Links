@@ -64,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
                 var countRef = 100
                 val userRef = db.collection("users").document(FirebaseUtil.getUid())
                 userRef.get().addOnSuccessListener { DocumentSnapshot ->
-
                     //countStr =
                     if (DocumentSnapshot.get("count").toString().equals("null")) {
                         countRef = 0

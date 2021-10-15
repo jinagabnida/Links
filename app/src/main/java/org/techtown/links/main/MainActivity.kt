@@ -94,23 +94,21 @@ class MainActivity : AppCompatActivity() {
                 var countInt: Int = 100
                 userRef.get().addOnSuccessListener { DocumentSnapshot ->
                     countStr = DocumentSnapshot.get("count").toString()
-
                     countInt = Integer.parseInt(countStr)
-                    cou
-
                 }
                 if (countInt == 0){
-
                     userRef.update("count",1)
                 }else{
                     userRef.get().addOnSuccessListener { DocumentSnapshot ->
                         //countStr = DocumentSnapshot.get("count").toString()
                         userRef.update("count",FieldValue.increment(1))
+
                         countLinks++
                     }
 
                     //userRef.update("count",countLinks)
                 }
+                countInt++
 
 
                 val dataLinks = hashMapOf(
@@ -125,17 +123,16 @@ class MainActivity : AppCompatActivity() {
                     .addOnFailureListener {
                         Log.e(TAG, "onCreate: error : $it")
                     }*/
-
-                userRef.collection("links").document("$countLinks").set(dataLinks)
+                //userRef.collection("links").document("$countLinks").set(dataLinks)
+                userRef.collection("links").document("$countInt").set(dataLinks)
                     .addOnSuccessListener {
                         Log.d(TAG, "set(dataLinks) success")
-                        getLink()
                     }
                     .addOnFailureListener {
                         Log.e(TAG, "onCreate: error : $it")
                     }
 
-               // getLink() //갱신
+               getLink() //갱신
             }
             .setNeutralButton("취소", null)
             .create()
