@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405119345780",
+    "project_id": "links-2ffb2",
+    "storage_bucket": "links-2ffb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405119345780:android:5f99a95c74971f5af65d21",
+        "android_client_info": {
+          "package_name": "org.techtown.links"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405119345780-26s4mra4dlt1b0ov9j22rnu0080jel4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.techtown.links",
+            "certificate_hash": "09de95aa19d9dab8bbd73ee9e0004ccba0b23a7f"
+          }
+        },
+        {
+          "client_id": "405119345780-q3nu38ds647f0s6ihqi32tvf5gvacso2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTkmQ-X2VwA3biyz73UfGNgsZmMM1chHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405119345780-q3nu38ds647f0s6ihqi32tvf5gvacso2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
