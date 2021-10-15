@@ -95,44 +95,55 @@ class MainActivity : AppCompatActivity() {
                 userRef.get().addOnSuccessListener { DocumentSnapshot ->
                     countStr = DocumentSnapshot.get("count").toString()
                     countInt = Integer.parseInt(countStr)
-                }
-                if (countInt == 0){
-                    userRef.update("count",1)
-                }else{
-                    userRef.get().addOnSuccessListener { DocumentSnapshot ->
-                        //countStr = DocumentSnapshot.get("count").toString()
-                        userRef.update("count",FieldValue.increment(1))
+                    /*if (countInt == 0){
+                        userRef.update("count",1)
+                    }else{
+                        userRef.get().addOnSuccessListener { DocumentSnapshot ->
+                            //countStr = DocumentSnapshot.get("count").toString()
+                            userRef.update("count",FieldValue.increment(1))
 
-                        countLinks++
-                    }
+                            countLinks++
+                        }
 
-                    //userRef.update("count",countLinks)
-                }
-                countInt++
-
-
-                val dataLinks = hashMapOf(
-                    "link" to inviteeLink,
-                    "title" to inviteeTitle
-                )
-
-               /* userRef.update("count", countLinks)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "update(count) success")
-                    }
-                    .addOnFailureListener {
-                        Log.e(TAG, "onCreate: error : $it")
+                        //userRef.update("count",countLinks)
                     }*/
-                //userRef.collection("links").document("$countLinks").set(dataLinks)
-                userRef.collection("links").document("$countInt").set(dataLinks)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "set(dataLinks) success")
-                    }
-                    .addOnFailureListener {
-                        Log.e(TAG, "onCreate: error : $it")
-                    }
+                    userRef.update("count",FieldValue.increment(1)).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            countInt++
+                            val dataLinks = hashMapOf(
+                                "link" to inviteeLink,
+                                "title" to inviteeTitle
 
-               getLink() //갱신
+                            )
+                            userRef.collection("links").document("$countInt").set(dataLinks)
+                                .addOnSuccessListener {
+                                    Log.d(TAG, "set(dataLinks) success")
+                                    getLink() //갱신
+
+                                }
+                                .addOnFailureListener {
+                                    Log.e(TAG, "onCreate: error : $it")
+                                }
+                        }
+                    }
+                    //countInt++
+
+
+
+
+                    /* userRef.update("count", countLinks)
+                         .addOnSuccessListener {
+                             Log.d(TAG, "update(count) success")
+                         }
+                         .addOnFailureListener {
+                             Log.e(TAG, "onCreate: error : $it")
+                         }*/
+                    //userRef.collection("links").document("$countLinks").set(dataLinks)
+
+
+
+                }
+
             }
             .setNeutralButton("취소", null)
             .create()
